@@ -295,6 +295,24 @@ export var NetPrinter = {
       });
     }
   },
+  printImage: function (data, opts) {
+    if (opts === void 0) {
+      opts = {};
+    }
+    var options = {
+      beep: true,
+      cut: true,
+    };
+    if (Platform.OS === "ios") {
+      RNNetPrinter.printImageData(data, options, function (error) {
+        return console.warn(error);
+      });
+    } else {
+      RNNetPrinter.printImage(textTo64Buffer(text, opts), function (error) {
+        return console.warn(error);
+      });
+    }
+  },
   printBill: function (text, opts) {
     if (opts === void 0) {
       opts = {};

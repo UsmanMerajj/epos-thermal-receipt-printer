@@ -43,6 +43,7 @@ export declare const NetPrinter: {
   printText: (text: string, opts?: {}) => void;
   printBill: (text: string, opts?: {}) => void;
   printRawData: (text: string, opts: {}) => void;
+  printImage: (url: string, opts: {}) => void;
 };
 export declare const NetPrinterEventEmitter: NativeEventEmitter;
 export declare enum RN_THERMAL_RECEIPT_PRINTER_EVENTS {
