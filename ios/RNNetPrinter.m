@@ -174,6 +174,12 @@ RCT_EXPORT_METHOD(printImageData:(NSString *)imgUrl
                   printerOptions:(NSDictionary *)options
                   fail:(RCTResponseSenderBlock)errorCallback) {
     @try {
+
+        NSNumber* beepPtr = [options valueForKey:@"beep"];
+        NSNumber* cutPtr = [options valueForKey:@"cut"];
+        
+        BOOL beep = (BOOL)[beepPtr intValue];
+        BOOL cut = (BOOL)[cutPtr intValue];
         
         !connected_ip ? [NSException raise:@"Invalid connection" format:@"Can't connect to printer"] : nil;
         NSURL* url = [NSURL URLWithString:imgUrl];
@@ -193,6 +199,8 @@ RCT_EXPORT_METHOD(printImageData:(NSString *)imgUrl
             
             [[PrinterSDK defaultPrinterSDK] setPrintWidth:printerWidth];
             [[PrinterSDK defaultPrinterSDK] printImage:printImage ];
+            beep ? [[PrinterSDK defaultPrinterSDK] beep] : nil;
+            cut ? [[PrinterSDK defaultPrinterSDK] cutPaper] : nil;
         }
         
     } @catch (NSException *exception) {
