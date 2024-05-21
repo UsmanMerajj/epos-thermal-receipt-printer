@@ -263,13 +263,9 @@ export var NetPrinter = {
     }
     if (Platform.OS === "ios") {
       var processedText = textPreprocessingIOS(text);
-      RNNetPrinter.printRawData(
-        processedText.text,
-        processedText.opts,
-        function (error) {
-          return console.warn(error);
-        }
-      );
+      RNNetPrinter.printRawData(processedText.text, opts, function (error) {
+        return console.warn(error);
+      });
     } else {
       RNNetPrinter.printRawData(textTo64Buffer(text, opts), function (error) {
         return console.warn(error);
@@ -299,12 +295,8 @@ export var NetPrinter = {
     if (opts === void 0) {
       opts = {};
     }
-    var options = {
-      beep: true,
-      cut: true,
-    };
     if (Platform.OS === "ios") {
-      RNNetPrinter.printImageData(data, options, function (error) {
+      RNNetPrinter.printImageData(data, opts, function (error) {
         return console.warn(error);
       });
     } else {
