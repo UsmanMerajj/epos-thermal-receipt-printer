@@ -155,18 +155,16 @@ RCT_EXPORT_METHOD(printRawData:(NSString *)text
     @try {
         NSNumber* beepPtr = [options valueForKey:@"beep"];
         NSNumber* cutPtr = [options valueForKey:@"cut"];
-
-        NSLog(@"%@", options);
         
-        // BOOL beep = (BOOL)[beepPtr intValue];
-        // BOOL cut = (BOOL)[cutPtr intValue];
+        BOOL beep = (BOOL)[beepPtr intValue];
+        BOOL cut = (BOOL)[cutPtr intValue];
         
         !connected_ip ? [NSException raise:@"Invalid connection" format:@"Can't connect to printer"] : nil;
         
         // [[PrinterSDK defaultPrinterSDK] printTestPaper];
         [[PrinterSDK defaultPrinterSDK] printText:text];
-        // beep ? [[PrinterSDK defaultPrinterSDK] beep] : nil;
-        // cut ? [[PrinterSDK defaultPrinterSDK] cutPaper] : nil;
+        beep ? [[PrinterSDK defaultPrinterSDK] beep] : nil;
+        cut ? [[PrinterSDK defaultPrinterSDK] cutPaper] : nil;
     } @catch (NSException *exception) {
         errorCallback(@[exception.reason]);
     }
