@@ -155,6 +155,8 @@ RCT_EXPORT_METHOD(printRawData:(NSString *)text
     @try {
         NSNumber* beepPtr = [options valueForKey:@"beep"];
         NSNumber* cutPtr = [options valueForKey:@"cut"];
+
+        NSLog(@"%@", options);
         
         // BOOL beep = (BOOL)[beepPtr intValue];
         // BOOL cut = (BOOL)[cutPtr intValue];
