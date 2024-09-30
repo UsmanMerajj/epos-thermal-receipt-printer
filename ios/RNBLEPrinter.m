@@ -93,19 +93,25 @@ RCT_EXPORT_METHOD(printRawData:(NSString *)text
         
         NSNumber* boldPtr = [options valueForKey:@"bold"];
         NSNumber* alignCenterPtr = [options valueForKey:@"center"];
+        NSNumber* cashPtr = [options valueForKey:@"openCasher"];
 
         BOOL bold = (BOOL)[boldPtr intValue];
         BOOL alignCenter = (BOOL)[alignCenterPtr intValue];
+        BOOL openCasher = (BOOL)[cashPtr intValue];
 
         bold ? [[PrinterSDK defaultPrinterSDK] sendHex:@"1B2108"] : [[PrinterSDK defaultPrinterSDK] sendHex:@"1B2100"];
         alignCenter ? [[PrinterSDK defaultPrinterSDK] sendHex:@"1B6102"] : [[PrinterSDK defaultPrinterSDK] sendHex:@"1B6101"];
+        openCasher ? [[PrinterSDK defaultPrinterSDK] openCasher] : nil;
+
         [[PrinterSDK defaultPrinterSDK] printText:text];
         
         NSNumber* beepPtr = [options valueForKey:@"beep"];
         NSNumber* cutPtr = [options valueForKey:@"cut"];
         
+        
         BOOL beep = (BOOL)[beepPtr intValue];
         BOOL cut = (BOOL)[cutPtr intValue];
+        
         
         beep ? [[PrinterSDK defaultPrinterSDK] beep] : nil;
         cut ? [[PrinterSDK defaultPrinterSDK] cutPaper] : nil;

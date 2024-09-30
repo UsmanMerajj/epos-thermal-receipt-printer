@@ -179,13 +179,9 @@ export var BLEPrinter = {
     }
     if (Platform.OS === "ios") {
       var processedText = textPreprocessingIOS(text);
-      RNBLEPrinter.printRawData(
-        processedText.text,
-        processedText.opts,
-        function (error) {
-          return console.warn(error);
-        }
-      );
+      RNBLEPrinter.printRawData(processedText.text, opts, function (error) {
+        return console.warn(error);
+      });
     } else {
       RNBLEPrinter.printRawData(textTo64Buffer(text, opts), function (error) {
         return console.warn(error);
@@ -198,13 +194,9 @@ export var BLEPrinter = {
     }
     if (Platform.OS === "ios") {
       var processedText = textPreprocessingIOS(text);
-      RNBLEPrinter.printRawData(
-        processedText.text,
-        processedText.opts,
-        function (error) {
-          return console.warn(error);
-        }
-      );
+      RNBLEPrinter.printRawData(processedText.text, opts, function (error) {
+        return console.warn(error);
+      });
     } else {
       RNBLEPrinter.printRawData(billTo64Buffer(text, opts), function (error) {
         return console.warn(error);
