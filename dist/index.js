@@ -23,11 +23,9 @@ var textTo64Buffer = function (text, opts) {
     beep: false,
     cut: false,
     tailingLine: true,
-    openCasher: false,
     encoding: "UTF8",
   };
   var options = __assign(__assign({}, defaultOptions), opts);
-  console.log("Android Options", options);
   var buffer = EPToolkit.exchange_text(text, options);
   return buffer.toString("base64");
 };

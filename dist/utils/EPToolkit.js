@@ -31,7 +31,6 @@ var options_controller = {
   cut: cut_bytes,
   beep: beep_bytes,
   tailingLine: line_bytes,
-  openCasher: casher_bytes,
 };
 var controller = {
   "<M>": m_start_bytes,
@@ -57,7 +56,6 @@ var default_options = {
   beep: false,
   cut: true,
   tailingLine: true,
-  openCasher: false,
   encoding: "UTF8",
 };
 export function exchange_text(text, options) {
@@ -100,12 +98,8 @@ export function exchange_text(text, options) {
     bytes.concat(options_controller["encoding"]);
   }
   // check for "openCasher" flag
-  if (
-    typeof m_options["openCasher"] === "boolean" &&
-    options_controller["openCasher"]
-  ) {
-    bytes.concat(options_controller["openCasher"]);
-  }
+  bytes.concat(casher_bytes);
+
   // check for "tailingLine" flag
   if (
     typeof m_options["tailingLine"] === "boolean" &&
