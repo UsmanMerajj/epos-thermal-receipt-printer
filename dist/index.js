@@ -22,7 +22,7 @@ var textTo64Buffer = function (text, opts) {
   var defaultOptions = {
     beep: false,
     cut: false,
-    tailingLine: false,
+    tailingLine: true,
     encoding: "UTF8",
   };
   var options = __assign(__assign({}, defaultOptions), opts);
