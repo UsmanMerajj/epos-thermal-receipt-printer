@@ -128,6 +128,14 @@ export var USBPrinter = {
       }
     );
   },
+  printImage: function (data, opts) {
+    if (opts === void 0) {
+      opts = {};
+    }
+    RNUSBPrinter.printImageData(data, function (error) {
+      return console.warn(error);
+    });
+  },
 };
 export var BLEPrinter = {
   init: function () {
