@@ -60,7 +60,7 @@ public class USBPrinterAdapter implements PrinterAdapter {
     private final static byte[] SET_LINE_SPACE_24 = new byte[] { ESC_CHAR, 0x33, 24 };
     private final static byte[] SET_LINE_SPACE_32 = new byte[] { ESC_CHAR, 0x33, 32 };
     private final static byte[] LINE_FEED = new byte[] { 0x0A };
-    private static byte[] CENTER_ALIGN = { 0x1B, 0X61, 0X31 };
+    private static byte[] CENTER_ALIGN = { 0x1B, 0x61, 0x01 };
 
     private USBPrinterAdapter() {
     }
