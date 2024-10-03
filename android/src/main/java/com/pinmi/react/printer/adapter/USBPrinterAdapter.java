@@ -106,7 +106,9 @@ public class USBPrinterAdapter implements PrinterAdapter {
         this.mContext = reactContext;
         this.mUSBManager = (UsbManager) this.mContext.getSystemService(Context.USB_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            this.mPermissionIndent = PendingIntent.getBroadcast(mContext, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_MUTABLE);
+            Intent explicitIntent = new Intent(ACTION_USB_PERMISSION);
+            explicitIntent.setPackage(mContext.getPackageName());
+            this.mPermissionIndent = PendingIntent.getBroadcast(mContext, 0, explicitIntent, PendingIntent.FLAG_MUTABLE);
         }
         else {
             this.mPermissionIndent = PendingIntent.getBroadcast(mContext, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_UPDATE_CURRENT);
