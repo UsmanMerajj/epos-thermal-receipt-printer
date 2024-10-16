@@ -94,6 +94,7 @@ public class USBPrinterAdapter implements PrinterAdapter {
             } else if (UsbManager.ACTION_USB_ACCESSORY_ATTACHED.equals(action) || UsbManager.ACTION_USB_DEVICE_ATTACHED.equals(action)) {
                 synchronized (this) {
                     if (mContext != null) {
+                        Toast.makeText(context, "USB device connected", Toast.LENGTH_LONG).show();
                         ((ReactApplicationContext) mContext).getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                                 .emit(EVENT_USB_DEVICE_ATTACHED, null);
                     }
