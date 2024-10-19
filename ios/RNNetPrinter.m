@@ -174,6 +174,31 @@ RCT_EXPORT_METHOD(printRawData:(NSString *)text
     }
 }
 
+RCT_EXPORT_METHOD(sendHex:(NSString *)text
+                  printerOptions:(NSDictionary *)options
+                  fail:(RCTResponseSenderBlock)errorCallback) {
+    @try {
+        NSNumber* beepPtr = [options valueForKey:@"beep"];
+        NSNumber* cutPtr = [options valueForKey:@"cut"];
+        NSNumber* cashPtr = [options valueForKey:@"openCasher"];
+        
+        BOOL beep = (BOOL)[beepPtr intValue];
+        BOOL cut = (BOOL)[cutPtr intValue];
+        BOOL openCasher = (BOOL)[cashPtr intValue];
+        
+        !connected_ip ? [NSException raise:@"Invalid connection" format:@"Can't connect to printer"] : nil;
+
+        openCasher ? [[PrinterSDK defaultPrinterSDK] openCasher] : nil;
+        
+        // [[PrinterSDK defaultPrinterSDK] printTestPaper];
+        [[PrinterSDK defaultPrinterSDK] sendHex:text];
+        beep ? [[PrinterSDK defaultPrinterSDK] beep] : nil;
+        cut ? [[PrinterSDK defaultPrinterSDK] cutPaper] : nil;
+    } @catch (NSException *exception) {
+        errorCallback(@[exception.reason]);
+    }
+}
+
 RCT_EXPORT_METHOD(printImageData:(NSString *)imgUrl
                   printerOptions:(NSDictionary *)options
                   fail:(RCTResponseSenderBlock)errorCallback) {

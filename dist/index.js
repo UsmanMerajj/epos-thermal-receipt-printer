@@ -343,6 +343,21 @@ export var NetPrinter = {
       });
     }
   },
+  sendHex: function (text, opts) {
+    if (opts === void 0) {
+      opts = {};
+    }
+    if (Platform.OS === "ios") {
+      RNNetPrinter.sendHex(text, opts, function (error) {
+        return console.warn(error);
+      });
+    } else {
+      // TODO: Update this
+      RNNetPrinter.sendHex(textTo64Buffer(text, opts), function (error) {
+        return console.warn(error);
+      });
+    }
+  },
 };
 export var NetPrinterEventEmitter = new NativeEventEmitter(RNNetPrinter);
 export var RN_THERMAL_RECEIPT_PRINTER_EVENTS;
