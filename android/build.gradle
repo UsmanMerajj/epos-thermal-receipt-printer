@@ -4,6 +4,7 @@ android {
     compileSdkVersion = 34
     buildToolsVersion = "29.0.2"
 
+    namespace "com.pinmi.react.printer"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 33
