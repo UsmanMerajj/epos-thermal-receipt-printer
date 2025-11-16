@@ -1,4 +1,11 @@
-# react-native-thermal-receipt-printer
+# epos-thermal-receipt-printer
+
+**Note:** This repository is based on the original project **react-native-thermal-receipt-printer** (https://github.com/HeligPfleigh/react-native-thermal-receipt-printer).  
+The original project is no longer maintained, so this repo continues updates and maintenance.
+
+---
+
+# (Original README content starts here)
 
 Fork of `react-native-printer` and add implement for auto connect printer with usb
 A React Native Library to support USB/BLE/Net printer
@@ -49,15 +56,16 @@ and comment out code related to Flipper in `ios/AppDelegate.m`
 | NetPrinter | :heavy_check_mark: | :heavy_check_mark: |
 
 ## Predefined tag
-| Tags          | Description           |
-|:-------------:|:---------------------:|
-| C             | Center                |
-| D             | Medium font           |
-| B             | Large font            |
-| M             | Medium font           |
-| CM            | Medium font, centered |
-| CB            | Medium font, centered |
-| CD            | Large font, centered  |
+
+| Tags |      Description      |
+| :--: | :-------------------: |
+|  C   |        Center         |
+|  D   |      Medium font      |
+|  B   |      Large font       |
+|  M   |      Medium font      |
+|  CM  | Medium font, centered |
+|  CB  | Medium font, centered |
+|  CD  | Large font, centered  |
 
 ## Development workflow
 
